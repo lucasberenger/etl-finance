@@ -11,5 +11,17 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
   
+  frontend:
+    image: grafana/grafana
+    container_name: frontend
+    environment:
+      - GF_SECURITY_ADMIN_USER=ecommerce
+      - GF_SECURITY_ADMIN_PASSWORD=ecommerce
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+  
 volumes:
   pgdata:
+  grafana_data:
